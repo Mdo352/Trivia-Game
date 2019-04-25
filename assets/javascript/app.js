@@ -17,12 +17,24 @@ var answersObj = [
     {choiceA:"50%", choiceB:"10%", choiceC:"75%", choiceD:"30%"}
 ]
 
+function clearText(){
+    $("#target").empty();
+}
+
 function populateQuestions(){
+    var radioAnswerA = $("<p id='answerA'><input type='radio' name='q-"+counter+"' value=a/>a. "+answersObj[counter].choiceA+"</p>")
+    var radioAnswerB = $("<p id='answerB'><input type='radio' name='q-"+counter+"' value=b/>b. "+answersObj[counter].choiceB+"</p>")
+    var radioAnswerC = $("<p id='answerC'><input type='radio' name='q-"+counter+"' value=c/>c. "+answersObj[counter].choiceC+"</p>")
+    var radioAnswerD = $("<p id='answerD'><input type='radio' name='q-"+counter+"' value=d/>d. "+answersObj[counter].choiceD+"</p>")
+    var questionCycle = $("<p>"+questionsObj[counter].question+"</p>")
+
     $("#question").text(questionsObj[counter].question);
-    $("#answerA").text(answersObj[counter].choiceA);
-    $("#answerB").text(answersObj[counter].choiceB);
-    $("#answerC").text(answersObj[counter].choiceC);
-    $("#answerD").text(answersObj[counter].choiceD);
+
+    radioAnswerA.appendTo("#target");
+    radioAnswerB.appendTo("#target");
+    radioAnswerC.appendTo("#target");
+    radioAnswerD.appendTo("#target");
+    console.log('question '+counter)
     
 }
 
@@ -33,7 +45,8 @@ $(document).ready(function() {
             populateQuestions();
             $("#submitBtn").on("click", function(){
                 counter++;
-                console.log(counter);
+                console.log($('#answerA'));
+                clearText();
                 populateQuestions();
             })            
         }
