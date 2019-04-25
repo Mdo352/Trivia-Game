@@ -1,0 +1,19 @@
+body{
+    margin-top: 40px;
+    padding: 0;
+    background-color: black;
+}
+
+/* #pageContainer{
+    margin: 0 auto;
+    width:900px;
+    height: 100%;
+    background-color: aqua;
+} */
+
+.questionContainer{
+    margin: 0px auto;
+    background-color: aliceblue;
+    width: 450px;
+    height: 300px;
+}
