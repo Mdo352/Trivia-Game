@@ -1,4 +1,5 @@
 var counter = 0;
+correctAnswer = 0;
 
 var questionsObj = [
     {question:"On average, how many different parts does a standard car have?", answer:"d"},
@@ -22,10 +23,10 @@ function clearText(){
 }
 
 function populateQuestions(){
-    var radioAnswerA = $("<p id='answerA'><input type='radio' name='q-"+counter+"' value=a/>a. "+answersObj[counter].choiceA+"</p>")
-    var radioAnswerB = $("<p id='answerB'><input type='radio' name='q-"+counter+"' value=b/>b. "+answersObj[counter].choiceB+"</p>")
-    var radioAnswerC = $("<p id='answerC'><input type='radio' name='q-"+counter+"' value=c/>c. "+answersObj[counter].choiceC+"</p>")
-    var radioAnswerD = $("<p id='answerD'><input type='radio' name='q-"+counter+"' value=d/>d. "+answersObj[counter].choiceD+"</p>")
+    var radioAnswerA = $("<p id='answerA'><input type='radio' name='q-"+counter+"' value=a>a. "+answersObj[counter].choiceA+"</p>")
+    var radioAnswerB = $("<p id='answerB'><input type='radio' name='q-"+counter+"' value=b>b. "+answersObj[counter].choiceB+"</p>")
+    var radioAnswerC = $("<p id='answerC'><input type='radio' name='q-"+counter+"' value=c>c. "+answersObj[counter].choiceC+"</p>")
+    var radioAnswerD = $("<p id='answerD'><input type='radio' name='q-"+counter+"' value=d>d. "+answersObj[counter].choiceD+"</p>")
     var questionCycle = $("<p>"+questionsObj[counter].question+"</p>")
 
     $("#question").text(questionsObj[counter].question);
@@ -44,9 +45,13 @@ $(document).ready(function() {
         if (i == counter){
             populateQuestions();
             $("#submitBtn").on("click", function(){
-                counter++;
-                console.log($('#answerA'));
+                var userChoice = $("input[name='q-"+counter+"']:checked").val();
+                console.log(userChoice);
+                if(userChoice==questionsObj[counter].answer){
+                    alert('correct');
+                }
                 clearText();
+                counter++;
                 populateQuestions();
             })            
         }
