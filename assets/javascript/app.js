@@ -1,5 +1,11 @@
-var counter = 0;
-correctAnswer = 0;
+$(document).ready(function() {
+
+    var counter = 0;
+    var correctAnswer = 0;
+    var userChoice;
+    var number = 5;
+    var intervalId;
+
 
 var questionsObj = [
     {question:"On average, how many different parts does a standard car have?", answer:"d"},
@@ -20,6 +26,7 @@ var answersObj = [
 
 function clearText(){
     $("#target").empty();
+    $("#question").empty();
 }
 
 function populateQuestions(){
@@ -35,26 +42,56 @@ function populateQuestions(){
     radioAnswerB.appendTo("#target");
     radioAnswerC.appendTo("#target");
     radioAnswerD.appendTo("#target");
-    console.log('question '+counter)
+    console.log('question # '+counter)
+
+    number = 5;
     
 }
 
-$(document).ready(function() {
+    function run() {
+      clearInterval(intervalId);
+      intervalId = setInterval(decrement, 1000);
+    }
 
-    for(i=0; i <questionsObj.length; i++){
+    function decrement(){
+      number--;
+      $("#timer").text(number);
+
+      if (number === 0) {
+        stop();
+        $('#submitBtn').trigger('click');
+        alert(userChoice);
+      }
+    }
+
+    function stop() {
+      clearInterval(intervalId);
+    }
+
+    
+    for(i=0; i < questionsObj.length; i++){
         if (i == counter){
             populateQuestions();
+            run();
             $("#submitBtn").on("click", function(){
-                var userChoice = $("input[name='q-"+counter+"']:checked").val();
+                userChoice = $("input[name='q-"+counter+"']:checked").val();
                 console.log(userChoice);
                 if(userChoice==questionsObj[counter].answer){
-                    alert('correct');
+                    // alert('correct');
+                    correctAnswer++;
                 }
                 clearText();
                 counter++;
                 populateQuestions();
+                run();
             })            
         }
+        if (i > questionsObj.length){
+            break;
+        }
+        
     }
-    
+    // alert(correctAnswer+"/"+questionsObj.length)
+
+    // alert('This should pop up second')
 })
