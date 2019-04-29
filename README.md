@@ -10,7 +10,7 @@ this project helped me further my grasp on dynamically create elements with java
 - [x] clear out the div after the last quesion
 - [ ] add sound whether or not you get the quesion correct
 - [ ] stop the counter from running after the final quesion
-- [ ] append the final score into the empty #questionContainer div
+- [x] append the final score into the empty #questionContainer div
 - [ ] add more questions to the list of object questions
 - [ ] randomize the order that questions and radio inputs show populate each time
 
