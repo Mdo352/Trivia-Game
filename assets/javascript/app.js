@@ -115,7 +115,6 @@ $(document).ready(function() {
                 run();
                 if (questionsLeft == false){
                   var finalScore = correctAnswer/questionsObj.length;
-                  console.log("Final Score shoul pop up");
                   $("#question").text("You got "+correctAnswer+" questions correct");
                   $("#target").text(finalScore * 100 + '%');
                 }           
