@@ -6,6 +6,8 @@ You have 15 seconds to answer all og the questions. When you click the submit bu
 The number of answers you get correct will be shown to you after you complete the final question.
 this project helped me further my grasp on dynamically create elements with javascript/jQuery. As well as using timers/asynchronous.
 
+The deployed version of this game can be found here: https://mdo352.github.io/Trivia-Game/
+
 ## Tasks to complete
 - [x] clear out the div after the last quesion
 - [ ] add sound whether or not you get the quesion correct
